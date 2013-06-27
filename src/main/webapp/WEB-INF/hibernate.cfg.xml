@@ -24,8 +24,8 @@
 		<property name="format_sql">false</property>
 		<property name="current_session_context_class">thread</property>
 
-		<mapping resource="pp/corleone/domain/CarInfo.hbm.xml" />
-		<mapping resource="pp/corleone/domain/SellerInfo.hbm.xml" />
+		<mapping resource="shc/iautos/domain/CarInfo.hbm.xml" />
+		<mapping resource="shc/iautos/domain/SellerInfo.hbm.xml" />
 
 	</session-factory>
 </hibernate-configuration>
