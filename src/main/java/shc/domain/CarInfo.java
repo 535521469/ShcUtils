@@ -6,7 +6,7 @@ public abstract class CarInfo {
 
 	public static final int SELLER_TYPE_SHOP = 1;
 	public static final int SELLER_TYPE_PERSON = 2;
-
+	
 	private String carSourceUrl;
 	protected String sourceType; // 58 or iautos or something else
 	private String locate;
