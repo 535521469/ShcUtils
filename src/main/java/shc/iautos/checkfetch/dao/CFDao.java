@@ -7,5 +7,4 @@ import shc.iautos.domain.IautosCarInfo;
 public interface CFDao {
 
 	public List<IautosCarInfo> listIncompletedCars();
-
 }

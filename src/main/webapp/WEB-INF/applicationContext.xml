@@ -3,6 +3,14 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
+	<bean id="cfDao" class="shc.iautos.checkfetch.dao.CFDaoImp" />
 
+	<bean id="cfService" class="shc.iautos.checkfetch.service.CFServiceImp">
+		<property name="cfDao" ref="cfDao" />
+	</bean>
+
+	<bean class="shc.iautos.checkfetch.action.CFAction">
+		<property name="cfService" ref="cfService" />
+	</bean>
 
 </beans>

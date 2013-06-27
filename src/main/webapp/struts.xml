@@ -17,7 +17,7 @@
 
 	<package name="cf">
 
-		<action name="cars" class="shc.iautos.checkfetch.action.CFAction" method="cars">
+		<action name="cars" class="shc.iautos.checkfetch.action.CFAction">
 			<result>/cf/list_incompleted_carinfos.jsp</result>
 		</action>
 		<!-- <action name="login" class="shc.iautos.checkfetch.action.CFAction"> -->
