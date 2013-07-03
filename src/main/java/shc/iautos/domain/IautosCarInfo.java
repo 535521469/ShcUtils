@@ -1,28 +1,118 @@
 package shc.iautos.domain;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.annotations.GenericGenerator;
 
-import shc.domain.CarInfo;
-
-public class IautosCarInfo extends CarInfo implements Cloneable, Serializable {
-
+@Entity
+@Table(name = "CarInfo_Iautos")
+public class IautosCarInfo implements Cloneable, Serializable {
+	
 	private static final long serialVersionUID = -4395908881660747661L;
-
+	
 	public static final String SOURCE_TYPE = "iautos";
 
-	// public static final int STATUS_TYPE_FOR_SALE = 1;
-	// public static final int STATUS_TYPE_SOLD = 4;
-	// public static final int STATUS_TYPE_OVERDUE = 8;
-
+	@ManyToOne(cascade = CascadeType.ALL, targetEntity = IautosSellerInfo.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "SellerID")
 	private IautosSellerInfo iautosSellerInfo;
 
-	private String shopUrl;
-	private String licenseDate; // register date
-	private String brand; // suo shu pin pai
+	@Id
+	@GeneratedValue(generator = "uuidgenerator")
+	@GenericGenerator(name = "uuidgenerator", strategy = "uuid")
+	private String seqID;
+
+	@Column(name = "CityName", nullable = true)
+	private String cityName;
+
+	@Column(name = "SourceType", nullable = false)
+	protected String sourceType = SOURCE_TYPE; // 58 or iautos or something else
+
+	@Column(name = "Manufacturer", nullable = true)
 	private String manufacturer; // sheng chan chang shang ,
+
+	@Column(name = "Brand", nullable = true)
+	private String brand; // suo shu pin pai
+
+	@Column(name = "Gearbox", nullable = true)
+	private String gearbox;
+
+	@Column(name = "Displacement", nullable = true)
+	private String displacement;
+
+	@Column(name = "LicenseDate", nullable = true)
+	private String licenseDate; // register date
+
+	@Column(name = "CarColor", nullable = true)
+	private String color;
+
+	@Column(name = "RoadHaul", nullable = true)
+	private String roadHaul;
+
+	@Column(name = "StatusType", nullable = true)
+	private Integer statusType;
+
+	@Column(name = "CarSourceType", nullable = true)
+	private int sellerType; // shop or person
+
+	@Column(name = "Price", nullable = true)
+	private String price;
+
+	@Column(name = "ParkAddress", nullable = true)
 	private String parkAddress; // the place where the car parks
+
+	@Column(name = "Title", nullable = true)
+	private String title;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "DeclareDate", nullable = true)
+	private Date declareDate;
+
+	@Column(name = "SourceUrl", nullable = true)
+	private String carSourceUrl;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "FetchDateTime", nullable = true)
+	private Date fetchDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "LastActiveDateTime", nullable = true)
+	private Date lastActiveDate;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "OffLineDateTime", nullable = true)
+	private Date offlineDate;
+
+	// @Column(name = "SellerID", nullable = true)
+	// private String sellerID;
+	// public String getSellerID() {
+	// return sellerID;
+	// }
+	// public void setSellerID(String sellerID) {
+	// this.sellerID = sellerID;
+	// }
+
+	@Column(name = "Contacter", nullable = true)
+	private String contacter;
+
+	@Column(name = "ContacterURL", nullable = true)
+	private String shopUrl;
+
+	@Column(name = "ContacterPhone", nullable = true)
+	private String contacterPhone;
 
 	public String getParkAddress() {
 		return parkAddress;
@@ -88,6 +178,146 @@ public class IautosCarInfo extends CarInfo implements Cloneable, Serializable {
 		this.licenseDate = licenseDate;
 	}
 
+	public Date getFetchDate() {
+		return fetchDate;
+	}
+
+	public void setFetchDate(Date fetchDate) {
+		this.fetchDate = fetchDate;
+	}
+
+	public Date getLastActiveDate() {
+		return lastActiveDate;
+	}
+
+	public void setLastActiveDate(Date lastActiveDate) {
+		this.lastActiveDate = lastActiveDate;
+	}
+
+	public Date getOfflineDate() {
+		return offlineDate;
+	}
+
+	public void setOfflineDate(Date offlineDate) {
+		this.offlineDate = offlineDate;
+	}
+
+	public String getCityName() {
+		return cityName;
+	}
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+
+	public Integer getStatusType() {
+		return statusType;
+	}
+
+	public void setStatusType(Integer statusType) {
+		this.statusType = statusType;
+	}
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getRoadHaul() {
+		return roadHaul;
+	}
+
+	public void setRoadHaul(String roadHaul) {
+		this.roadHaul = roadHaul;
+	}
+
+	public String getDisplacement() {
+		return displacement;
+	}
+
+	public void setDisplacement(String displacement) {
+		this.displacement = displacement;
+	}
+
+	public String getGearbox() {
+		return gearbox;
+	}
+
+	public void setGearbox(String gearbox) {
+		this.gearbox = gearbox;
+	}
+
+	public String getContacter() {
+		return contacter;
+	}
+
+	public void setContacter(String contacter) {
+		this.contacter = contacter;
+	}
+
+	public String getContacterPhone() {
+		return contacterPhone;
+	}
+
+	public void setContacterPhone(String contacterPhone) {
+		this.contacterPhone = contacterPhone;
+	}
+
+	public int getSellerType() {
+		return sellerType;
+	}
+
+	public void setSellerType(int sellerType) {
+		this.sellerType = sellerType;
+	}
+
+	public String getCarSourceUrl() {
+		return carSourceUrl;
+	}
+
+	public void setCarSourceUrl(String carSourceUrl) {
+		this.carSourceUrl = carSourceUrl;
+	}
+
+	public String getSeqID() {
+		return seqID;
+	}
+
+	public void setSeqID(String seqID) {
+		this.seqID = seqID;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Date getDeclareDate() {
+		return declareDate;
+	}
+
+	public void setDeclareDate(Date declareDate) {
+		this.declareDate = declareDate;
+	}
+
+	public void setSourceType(String sourceType) {
+		this.sourceType = sourceType;
+	}
+
 	@Override
 	public IautosCarInfo clone() throws CloneNotSupportedException {
 		return (IautosCarInfo) super.clone();
@@ -103,6 +333,39 @@ public class IautosCarInfo extends CarInfo implements Cloneable, Serializable {
 		}
 		return false;
 	};
+
+	@Override
+	public String toString() {
+
+		return new ToStringBuilder(this).append("url", this.getSourceType())
+				.append("contacter phone", this.getContacterPhone())
+				.append("contacter", this.getContacter()).toString();
+	}
+
+	public enum IautosSellerType {
+		SHOP(1), INDIVIDUAL(2);
+
+		private int code;
+
+		public int getCode() {
+			return code;
+		}
+
+		private IautosSellerType(int code) {
+			this.code = code;
+		}
+
+		public static IautosSellerType getByCode(int code) {
+			for (IautosSellerType iautosSellerType : IautosSellerType.values()) {
+				if (iautosSellerType.getCode() == code) {
+					return iautosSellerType;
+				}
+			}
+			throw new IllegalArgumentException(code
+					+ " match non IautosSellerType");
+		}
+
+	}
 
 	public enum IautosStatusCode {
 		STATUS_TYPE_FOR_SALE(1, "\u5F85\u552E"), STATUS_TYPE_SOLD(4,
@@ -148,15 +411,6 @@ public class IautosCarInfo extends CarInfo implements Cloneable, Serializable {
 			this.code = code;
 			this.desc = desc;
 		}
-
-	}
-
-	@Override
-	public String toString() {
-
-		return new ToStringBuilder(this).append("url", this.getSourceType())
-				.append("contacter phone", this.getContacterPhone())
-				.append("contacter", this.getContacter()).toString();
 	}
 
 }

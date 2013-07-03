@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3.15//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="checkfetch" extends="struts-default" namespace="/cf">
+		<action name="listIncompletedSellers" method="listIncompletedSellers"
+			class="cfAction">
+			<!-- class="shc.iautos.checkfetch.action.CFAction" -->
+			<result>/check_fetch/list_incompleted_sellers.jsp</result>
+		</action>
+		<action name="getIncompletedSeller" method="getIncompletedSeller"
+			class="cfAction">
+			<!-- class="shc.iautos.checkfetch.action.CFAction" -->
+			<result>/check_fetch/get_incompleted_seller.jsp</result>
+		</action>
+		<action name="saveIncompletedSeller" method="saveIncompletedSeller"
+			class="cfAction">
+			<!-- class="shc.iautos.checkfetch.action.CFAction" -->
+			<result>/check_fetch/completed_seller.jsp</result>
+		</action>
+	</package>
+
+</struts>
